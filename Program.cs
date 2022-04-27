@@ -21,9 +21,19 @@ namespace TicTacToe
             char playerTurn = 'x';
             Console.Write($"{playerTurn}'s turn to choose a square (1-9): ");
             string choice = Console.ReadLine();
-            char square = char.Parse(choice);      
+            int square = int.Parse(choice);      
+            if (board[square - 1] == Convert.ToChar(choice))
+            {
+                updateBoard(board, square, playerTurn);
+            }
+            drawBoard(board);
 
             
+        }
+
+        static void updateBoard(List<char> board, int userSquare, char playerTurn)
+        {
+            board[userSquare - 1] = playerTurn;
         }
 
         static void drawBoard(List<char> board)
